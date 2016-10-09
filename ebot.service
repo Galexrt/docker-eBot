@@ -5,7 +5,7 @@ After=docker.service
 
 [Service]
 Restart=always
-ExecStart=/usr/bin/docker run -v /opt/docker/ebot/demos:/ebot/demos -v /opt/docker/ebot/logs:/ebot/logs -p 12360:12360 -p 12360:12360/udp -p 12361:12361 -p 12361:12361/udp --name ebot docker-ebot
+ExecStart=/usr/bin/docker run -v /opt/docker/ebot/demos:/ebot/demos -v /opt/docker/ebot/logs:/ebot/logs -p 12360:12360 -p 12360:12360/udp -p 12361:12361 -p 12361:12361/udp --net=host --name ebot docker-ebot
 ExecStop=/usr/bin/docker stop ebot
 ExecStopPost=/usr/bin/docker rm ebot
 

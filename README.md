@@ -1,6 +1,8 @@
 docker-eBot
 ==========
 
+[![](https://images.microbadger.com/badges/image/galexrt/ebot.svg)](https://microbadger.com/images/galexrt/ebot "Get your own image badge on microbadger.com")
+
 This is a Docker image of eBot.
 Please be aware that this is only the server.
 
@@ -10,7 +12,7 @@ Usage
 -----
 Provide following environment variables, when running the image through `docker` or `docker-compose`:
 
-* `EXTERNAL_IP
+* `EBOT_IP`
 * `MYSQL_HOST`
 * `MYSQL_PORT`
 * `MYSQL_USER`
@@ -24,7 +26,8 @@ docker run \
   -v /docker/ebot/logs:/ebot/logs \
   -p 12360:12360 \
   -p 12361:12361 \
-  --name ebot \
+  --net=host \
+  --name eBot \
   ebot-docker
 ```
 
