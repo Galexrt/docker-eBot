@@ -17,4 +17,3 @@ ebot:
     MYSQL_PORT: "3306"
   volumes:
     - "/opt/ebot/demos:/ebot/demos"
-

@@ -1,4 +1,4 @@
-FROM ubuntu:16.04 
+FROM ubuntu:16.04
 
 ENV EBOT_HOME="/ebot" TIMEZONE="Europe/Berlin" PHP_VERSION="5.6.22" PTHREADS_VERSION="2.0.10"
 
