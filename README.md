@@ -3,6 +3,8 @@ docker-eBot
 
 [![](https://images.microbadger.com/badges/image/galexrt/ebot.svg)](https://microbadger.com/images/galexrt/ebot "Get your own image badge on microbadger.com")
 
+[![Docker Repository on Quay.io](https://quay.io/repository/galexrt/debian-dh/status "Docker Repository on Quay.io")](https://quay.io/repository/galexrt/zulip)
+
 This is a Docker image of eBot.
 Please be aware that this is only the server.
 
