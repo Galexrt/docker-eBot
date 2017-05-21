@@ -26,10 +26,11 @@ RUN apt-get update && \
     echo 'date.timezone = "${TIMEZONE}"' >> /usr/local/lib/php.ini && \
     echo 'extension=pthreads.so' >> /usr/local/lib/php.ini && \
     /bin/ln -s /usr/bin/nodejs /usr/bin/node && \
-    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-    php -r "if (hash_file('SHA384', 'composer-setup.php') === '070854512ef404f16bac87071a6db9fd9721da1684cd4589b1196c3faf71b9a2682e2311b36a5079825e155ac7ce150d') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" && \
-    php composer-setup.php --install-dir=/usr/bin && \
-    php -r "unlink('composer-setup.php');" && \
+    cd /home/install && \
+    php -r "copy('https://getcomposer.org/installer', '/home/install/composer-setup.php');" && \
+    php -r "if (hash_file('SHA384', '/home/install/composer-setup.php') === '070854512ef404f16bac87071a6db9fd9721da1684cd4589b1196c3faf71b9a2682e2311b36a5079825e155ac7ce150d') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('/home/install/composer-setup.php'); } echo PHP_EOL;" && \
+    php /home/install/composer-setup.php --install-dir=/usr/bin && \
+    rm /home/install/composer-setup.php && \
     mkdir "$EBOT_HOME" && \
     git clone https://github.com/deStrO/eBot-CSGO.git "$EBOT_HOME" && \
     cd "$EBOT_HOME" && \
@@ -40,8 +41,8 @@ RUN apt-get update && \
 
 VOLUME ["$EBOT_HOME/demos", "$EBOT_HOME/logs"]
 
-ADD entrypoint.sh /sbin/entrypoint.sh
-
 EXPOSE 12360 12360/udp 12361/udp
 
-ENTRYPOINT ["/sbin/entrypoint.sh"]
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
